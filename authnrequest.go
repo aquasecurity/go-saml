@@ -21,7 +21,7 @@ import (
 	"net/url"
 	"time"
 
-	"github.com/RobotsAndPencils/go-saml/util"
+	"github.com/aquasecurity/go-saml/util"
 )
 
 func ParseCompressedEncodedRequest(b64RequestXML string) (*AuthnRequest, error) {
@@ -82,6 +82,7 @@ func (r *AuthnRequest) Validate(publicCertPath string) error {
 
 // GetSignedAuthnRequest returns a singed XML document that represents a AuthnRequest SAML document
 func (s *ServiceProviderSettings) GetAuthnRequest() *AuthnRequest {
+
 	r := NewAuthnRequest()
 	r.AssertionConsumerServiceURL = s.AssertionConsumerServiceURL
 	r.Destination = s.IDPSSOURL
@@ -130,14 +131,7 @@ func NewAuthnRequest() *AuthnRequest {
 			Url:  "", // caller must populate ar.AppSettings.Issuer
 			SAML: "urn:oasis:names:tc:SAML:2.0:assertion",
 		},
-		IssueInstant: time.Now().UTC().Format(time.RFC3339Nano),
-		NameIDPolicy: NameIDPolicy{
-			XMLName: xml.Name{
-				Local: "samlp:NameIDPolicy",
-			},
-			AllowCreate: true,
-			Format:      "urn:oasis:names:tc:SAML:2.0:nameid-format:transient",
-		},
+		IssueInstant: time.Now().UTC().Format("2014-07-17T0101:48Z"), // time format required for adfs
 		RequestedAuthnContext: RequestedAuthnContext{
 			XMLName: xml.Name{
 				Local: "samlp:RequestedAuthnContext",
