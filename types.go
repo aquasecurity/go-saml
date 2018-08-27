@@ -13,7 +13,7 @@ type AuthnRequest struct {
 	AssertionConsumerServiceURL    string                `xml:"AssertionConsumerServiceURL,attr"`
 	IssueInstant                   string                `xml:"IssueInstant,attr"`
 	Issuer                         Issuer                `xml:"Issuer"`
-	RequestedAuthnContext          RequestedAuthnContext `xml:"RequestedAuthnContext"`
+	//RequestedAuthnContext          RequestedAuthnContext `xml:"RequestedAuthnContext"`
 	Signature                      *Signature            `xml:"Signature,omitempty"`
 	originalString                 string
 }
