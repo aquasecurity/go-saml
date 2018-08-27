@@ -132,7 +132,7 @@ func NewAuthnRequest() *AuthnRequest {
 			SAML: "urn:oasis:names:tc:SAML:2.0:assertion",
 		},
 		IssueInstant: time.Now().UTC().Format("2014-07-17T0101:48Z"), // time format required for adfs
-		RequestedAuthnContext: RequestedAuthnContext{
+		/*RequestedAuthnContext: RequestedAuthnContext{
 			XMLName: xml.Name{
 				Local: "samlp:RequestedAuthnContext",
 			},
@@ -145,7 +145,7 @@ func NewAuthnRequest() *AuthnRequest {
 				SAML:      "urn:oasis:names:tc:SAML:2.0:assertion",
 				Transport: "urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport",
 			},
-		},
+		},*/
 		Signature: &Signature{
 			XMLName: xml.Name{
 				Local: "samlsig:Signature",
